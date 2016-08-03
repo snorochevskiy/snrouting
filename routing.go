@@ -34,7 +34,7 @@ type RoutedHandler struct {
 }
 
 type HttpContext struct {
-	Session    *session.Session
+	Session    *Session
 	Req        *http.Request
 	Resp       http.ResponseWriter
 	PathParams map[string]string
@@ -133,7 +133,7 @@ func (mh RoutedHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	session := session.GetSessionForRequest(r)
+	session := GetSessionForRequest(r)
 	context := HttpContext{
 		Session:    session,
 		Req:        r,
